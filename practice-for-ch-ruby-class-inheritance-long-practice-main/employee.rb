@@ -12,19 +12,12 @@ class Employee
 
     def bonus(multiplier)
         p "hi"
-        # if self.managed_employees.empty?
-        #     p "no"
-        #     @salary += @salary * multiplier
-        # else 
-        #     salary_before_multiplier = self.summed_salaries
-        #     p "salary_before_multiplier: #{salary_before_multiplier}"
-        #     salary_before_multiplier * multiplier
-        # end 
-        before_bonus = 0
         if self.managed_employees.empty?
-            
-        else
-        end
+            @salary += @salary * multiplier
+        else 
+            salary_before_multiplier = self.summed_salaries
+            salary_before_multiplier * multiplier
+        end 
 
 
 
@@ -47,35 +40,35 @@ class Employee
 
     end 
 
-    # def summed_salaries
-    #     current_salary = self.salary
-    #     managed_employees.each do |employee|
-    #         if employee.managed_employees.empty? 
-    #             current_salary += employee.salary 
-    #         else 
-    #             current_salary += employee.summed_salaries
-    #         end 
-    #     end 
-    #     current_salary - self.salary
-    # end 
+    def summed_salaries
+        current_salary = self.salary
+        managed_employees.each do |employee|
+            if employee.managed_employees.empty? 
+                current_salary += employee.salary 
+            else 
+                current_salary += employee.summed_salaries - @salary
+            end 
+        end
+        current_salary
+    end 
 
 
 end 
 
 
-# e = Employee.new("Eltion", "chef", 1000000)
-# a = Employee.new("Rob", "waiter", 78000, e)
-# b = Employee.new("Bob", "busboy", 12000, a)
-# c = Employee.new("Jack", "waiter", 10000, a)
+e = Employee.new("Eltion", "chef", 1000000)
+a = Employee.new("Rob", "waiter", 78000, e)
+b = Employee.new("Bob", "busboy", 12000, a)
+c = Employee.new("Jack", "waiter", 10000, a)
 
-# a.boss=e
+a.boss=e
 
-# b.boss=a
-# c.boss=a
+b.boss=a
+c.boss=a
 
 # p e.summed_salaries
 
-# p e.bonus(5)
+p e.bonus(5)
 
 # a.managed_employees.each {|e| p e.name}
 
