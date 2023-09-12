@@ -5,22 +5,26 @@ class Board
 
     def initialize 
         @board = Array.new(8) {Array.new(8, [])}
+
+
         @board[0..1].each do |row|
             (0...row.length).each do |i|
-                row[i] << Piece.new
+              row[i] = Piece.new
             end 
+           
         end 
 
         @board[2..5].each do |row|
             (0...row.length).each do |i|
-                row[i] << NullPiece.new
+                row[i] = NullPiece.new
             end 
         end 
 
         @board[6..7].each do |row|
             (0...row.length).each do |i|
-                row[i] << Piece.new
+               row[i] = Piece.new 
             end 
+            
         end 
     end 
 
