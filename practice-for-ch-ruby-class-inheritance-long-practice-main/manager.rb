@@ -9,26 +9,25 @@ class Manager < Employee
     end 
 
 
-    def manager_bonus(multiplier=1)
-        temp = 0
-        self.managed_employees.each do |employee|
-            if employee.managed_employees.empty?
-                temp += employee.bonus
-            else
-                temp+= (employee.manager_bonus(multiplier)/multiplier)
-            end
-        end
-        temp*multiplier + @salary
-    end
+    # def manager_bonus(multiplier=1)
+    #     temp = 0
+    #     self.managed_employees.each do |employee|
+    #         if employee.managed_employees.empty?
+    #             temp += employee.bonus
+    #         else
+    #             temp+= (employee.manager_bonus(multiplier)/multiplier)
+    #         end
+    #     end
+    #     temp*multiplier + @salary
+    # end
 
 
 
 end 
 
 e = Manager.new("Eltion", "chef", 1000000)
-
-a = Manager.new("Rob", "waiter", 78000,e)
-b = Manager.new("Bob", "busboy", 12000,a)
+a = Manager.new("Rob", "waiter", 78000, e)
+b = Manager.new("Bob", "busboy", 12000, a)
 c = Manager.new("Jack", "waiter", 10000,a)
 
 

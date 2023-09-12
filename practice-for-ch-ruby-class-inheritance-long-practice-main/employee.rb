@@ -13,18 +13,11 @@ class Employee
     def bonus(multiplier)
         p "hi"
         if self.managed_employees.empty?
-            @salary += @salary * multiplier
+            @salary * multiplier # @salary += @salary * multiplier
         else 
             salary_before_multiplier = self.summed_salaries
             salary_before_multiplier * multiplier
         end 
-
-
-
-
-
-
-
     end 
 
     def boss=(new_boss)
@@ -37,7 +30,6 @@ class Employee
             @boss = new_boss
             new_boss.managed_employees << self unless new_boss.managed_employees.include?(self)
         end 
-
     end 
 
     def summed_salaries
@@ -46,7 +38,7 @@ class Employee
             if employee.managed_employees.empty? 
                 current_salary += employee.salary 
             else 
-                current_salary += employee.summed_salaries - @salary
+                employee.summed_salaries
             end 
         end
         current_salary
@@ -69,6 +61,7 @@ c.boss=a
 # p e.summed_salaries
 
 p e.bonus(5)
+p c.bonus(5)
 
 # a.managed_employees.each {|e| p e.name}
 
