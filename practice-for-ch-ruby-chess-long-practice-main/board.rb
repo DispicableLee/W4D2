@@ -1,21 +1,24 @@
+require_relative "piece"
+require_relative "null_piece"
+
 class Board 
 
     def initialize 
         @board = Array.new(8) {Array.new(8, [])}
         @board[0..1].each do |row|
-            (0...row.length).each do |row[i]|
+            (0...row.length).each do |i|
                 row[i] << Piece.new
             end 
         end 
 
         @board[2..5].each do |row|
-            (0...row.length).each do |row[i]|
+            (0...row.length).each do |i|
                 row[i] << NullPiece.new
             end 
         end 
 
         @board[6..7].each do |row|
-            (0...row.length).each do |row[i]|
+            (0...row.length).each do |i|
                 row[i] << Piece.new
             end 
         end 
@@ -32,7 +35,11 @@ class Board
     end 
 
     def move_piece(start_pos, end_pos)
-        @board[start_pos] = 
+        raise "error" if @board[start_pos].is_a?(NullPiece)
+        raise "error" if @board[end_pos].is_a?(Piece)
+        temp = @board[start_pos]
+        @board[end_pos] = temp
+        @board[start_pos] = NullPiece.new 
     end 
 
     
