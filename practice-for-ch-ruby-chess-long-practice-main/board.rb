@@ -1,5 +1,6 @@
 require_relative "piece"
 require_relative "null_piece"
+require "byebug"
 
 class Board 
 
@@ -9,9 +10,9 @@ class Board
 
         @board[0..1].each do |row|
             (0...row.length).each do |i|
-              row[i] = Piece.new
+                row[i] = Piece.new
             end 
-           
+        
         end 
 
         @board[2..5].each do |row|
@@ -22,9 +23,8 @@ class Board
 
         @board[6..7].each do |row|
             (0...row.length).each do |i|
-               row[i] = Piece.new 
+                row[i] = Piece.new 
             end 
-            
         end 
     end 
 
@@ -41,14 +41,15 @@ class Board
     def move_piece(start_pos, end_pos)
         raise "error" if @board[start_pos].is_a?(NullPiece)
         raise "error" if @board[end_pos].is_a?(Piece)
+        debugger
         temp = @board[start_pos]
         @board[end_pos] = temp
         @board[start_pos] = NullPiece.new 
     end 
 
-    
-
-
-
 
 end 
+
+
+# b = Board.new
+# b.move_piece([0,0], [3, 3])
