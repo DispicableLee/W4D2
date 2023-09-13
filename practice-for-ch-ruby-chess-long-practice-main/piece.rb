@@ -1,14 +1,12 @@
-require_relative "board"
-
 class Piece 
 
-    attr_reader :board, :pos
+    attr_reader :board, :pos, :color
     attr_writer :pos 
 
 
     def initialize(color, board, pos)
         @color = color 
-        @board = Board.new
+        @board = board
         @pos = pos
     end 
 
@@ -25,7 +23,7 @@ class Piece
     def valid_moves
         holder = []
 
-        @board.each_with_index do |row, r|
+        @board.board.each_with_index do |row, r|
             row.each_with_index do |col, c|
                 holder << [r, c]
             end 
@@ -34,8 +32,6 @@ class Piece
         holder 
 
     end 
-
-
 
     private 
     def symbol 
