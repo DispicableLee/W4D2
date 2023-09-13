@@ -1,18 +1,22 @@
 require_relative "piece"
 require_relative "null_piece"
+require_relative 'rook'
 require "byebug"
 
-class Board 
 
+class Board 
+    attr_accessor :board
+
+    FIRST = %i(rook, knight, bishop, king, queen, bishop, knight, rook)
+    LAST = FIRST.reverse
     def initialize 
         @board = Array.new(8) {Array.new(8, [])}
 
 
-        @board[0..1].each do |row|
+        @board[0].each do |row|
             (0...row.length).each do |i|
-                row[i] = Piece.new
+                row[i] = Piece.new("white", @board, row[i])
             end 
-        
         end 
 
         @board[2..5].each do |row|
@@ -47,7 +51,13 @@ class Board
         self[start_pos] = NullPiece.new 
     end 
 
-    attr_accessor :board
+
+    def print
+        @board.each do |piece|
+            p piece.to_s
+        end
+    end
+
 
 end 
 

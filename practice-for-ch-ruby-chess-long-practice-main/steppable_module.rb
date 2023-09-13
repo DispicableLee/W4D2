@@ -4,9 +4,9 @@ module Stepable
         holder = []
         current_pos = self.pos
         move_diffs.each do |spot|
-        if _________.empty? 
+        if self.empty? #piece
             holder << spot 
-        elsif ____.empty? == false && self.color =! "opposite piece".color 
+        elsif !(self.empty?) && self.color != @board[next_pos].color 
             holder << spot 
         end 
         holder 
