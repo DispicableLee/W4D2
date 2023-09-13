@@ -39,14 +39,15 @@ class Board
     end 
 
     def move_piece(start_pos, end_pos)
-        raise "error" if @board[start_pos].is_a?(NullPiece)
-        raise "error" if @board[end_pos].is_a?(Piece)
-        debugger
-        temp = @board[start_pos]
-        @board[end_pos] = temp
-        @board[start_pos] = NullPiece.new 
+        raise "error" if self[start_pos].is_a?(NullPiece)
+        raise "error" if self[end_pos].is_a?(Piece)
+        # debugger
+        temp = self[start_pos]
+        self[end_pos] = temp
+        self[start_pos] = NullPiece.new 
     end 
 
+    attr_accessor :board
 
 end 
 
