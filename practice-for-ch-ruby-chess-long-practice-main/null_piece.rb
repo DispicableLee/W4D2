@@ -2,12 +2,14 @@ require_relative 'piece'
 
 
 class NullPiece < Piece
-    # include Singleton
+    include Singleton
     
     attr_reader :color
 
     def initialize
-        @color = color
+        @color = nil
+        @board = nil
+        @pos = nil
     end
 
 

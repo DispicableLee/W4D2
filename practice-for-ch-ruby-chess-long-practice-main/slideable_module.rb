@@ -1,3 +1,4 @@
+require "byebug"
 module Slideable
 
     attr_reader :HORIZONTAL_DIRS, :DIAGONAL_DIRS
@@ -20,7 +21,7 @@ module Slideable
     def moves
         moves_array = []
         move_dirs.each do |direction|
-            unblocked_moves = grow_unblocked_moves_in_dir(direction)
+            unblocked_moves = grow_unblocked_moves_in_dir(direction[0], direction[1])
             moves_array << unblocked_moves
         end 
         moves_array
@@ -37,12 +38,14 @@ module Slideable
     def grow_unblocked_moves_in_dir(dx, dy)
         holder = [] 
         current_pos = self.pos
-
+        next_pos = current_pos
         while valid_moves.include?(next_pos)
-        next_pos = [current_pos[0] + dx, current_pos[1] + dy] 
-            if next_pos.empty? 
+        next_pos = [next_pos[0] + dx, next_pos[1] + dy] 
+        p @board[next_pos]
+            if @board[next_pos].empty? 
                 holder << next_pos 
-            elsif next_pos.empty? == false && self.color != @board[next_pos].color
+            elsif @board[next_pos].empty? == false && self.color != @board[next_pos].color
+
                 holder << next_pos 
             else 
                 break
@@ -53,4 +56,5 @@ module Slideable
 
 
 end 
+
 
