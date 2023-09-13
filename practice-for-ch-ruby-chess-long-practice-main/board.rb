@@ -4,32 +4,45 @@ require_relative 'rook'
 require "byebug"
 
 
+require_relative "piece"
+
 class Board 
     attr_accessor :board
 
-    FIRST = %i(rook, knight, bishop, king, queen, bishop, knight, rook)
-    LAST = FIRST.reverse
+
+    # FIRST = %w(Rook.new, Knight.new, Bishop.new, King.new, Queen.new, Bishop.new, Knight.new, Rook.new)
+    # LAST = FIRST.reverse
     def initialize 
         @board = Array.new(8) {Array.new(8, [])}
 
+        @board[0, 0] = Rook.new
+        # @board[0] = FIRST
+        # @board[1].each do |i|
+        #     i = Pawn.new
+        # end 
 
-        @board[0].each do |row|
-            (0...row.length).each do |i|
-                row[i] = Piece.new("white", @board, row[i])
-            end 
-        end 
+        # @board[6].each do |i|
+        #     i = Pawn.new
 
-        @board[2..5].each do |row|
-            (0...row.length).each do |i|
-                row[i] = NullPiece.new
-            end 
-        end 
 
-        @board[6..7].each do |row|
-            (0...row.length).each do |i|
-                row[i] = Piece.new 
-            end 
-        end 
+        # @board[0].each do |col|
+        #         col = Piece.new("white", @board, row[i])
+        #     end 
+        # end 
+
+        # # @board[1].each do |col|
+
+        # @board[2..5].each do |row|
+        #     (0...row.length).each do |i|
+        #         row[i] = NullPiece.new
+        #     end 
+        # end 
+
+        # @board[6..7].each do |row|
+        #     (0...row.length).each do |i|
+        #         row[i] = Piece.new 
+        #     end 
+        # end 
     end 
 
     def [](pos)

@@ -1,6 +1,6 @@
 module Slideable
 
-    attr_reader :HORIZONTAL_DIRS, DIAGONAL_DIRS
+    attr_reader :HORIZONTAL_DIRS, :DIAGONAL_DIRS
 
     HORIZONTAL_DIRS = [
         [-1, 0], # left
@@ -28,7 +28,7 @@ module Slideable
 
 
     private
-    
+
     def move_dirs
         raise NotImplementedError 
     end
