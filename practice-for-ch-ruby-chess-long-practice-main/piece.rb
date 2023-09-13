@@ -13,7 +13,7 @@ class Piece
     end 
 
     def to_s
-        p "#{symbol}"
+        "#{symbol}"
     end 
 
 
@@ -23,7 +23,16 @@ class Piece
 
 
     def valid_moves
-        
+        holder = []
+
+        @board.each_with_index do |row, r|
+            row.each_with_index do |col, c|
+                holder << [r, c]
+            end 
+        end 
+
+        holder 
+
     end 
 
 
@@ -33,15 +42,8 @@ class Piece
         raise NotImplementedError
     end 
 
-
-
-
-
-
-
-
-
-
-
-
 end 
+
+
+# bounds: row cannot be less than 0 and more than 7 
+#         column cannot be less than 0 and more than 7 
